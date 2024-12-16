@@ -1,0 +1,15 @@
+.info-image {
+  width: 200px; /* Đặt chiều rộng cố định */
+  height: 200px; /* Đặt chiều cao cố định */
+  max-width: 100%; /* Đảm bảo ảnh không vượt quá kích thước container */
+  object-fit: cover; /* Cắt ảnh để vừa với khung mà không bị méo */
+  border-radius: 10px; /* Bo góc mềm mại */
+  border: 2px solid #ccc; /* Thêm đường viền cho ảnh */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng */
+  margin-top: 10px;
+  transition: transform 0.3s ease-in-out; /* Hiệu ứng phóng to khi hover */
+}
+
+.info-image:hover {
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}

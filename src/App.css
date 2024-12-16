@@ -1,0 +1,65 @@
+/* App.css hoặc styles.css */
+* {
+  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước của phần tử */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column; /* Điều chỉnh chiều dọc để menu nằm trên cùng */
+  height: 100vh; /* Chiều cao đầy đủ của cửa sổ */
+}
+
+.sidebar {
+  display: flex; /* Sử dụng flexbox để sắp xếp các phần tử ngang */
+  justify-content: space-evenly; /* Chia đều không gian giữa các mục menu */
+  align-items: center; /* Căn giữa các mục menu theo chiều dọc */
+  background-color: #2c3e50; /* Màu nền của thanh điều hướng */
+  padding: 10px 0;
+}
+
+.sidebar ul {
+  display: flex; /* Chuyển list sang dạng flex */
+  padding: 0; /* Loại bỏ khoảng cách mặc định */
+  margin: 0; /* Loại bỏ margin mặc định */
+}
+
+.sidebar li {
+  list-style-type: none; /* Loại bỏ dấu chấm từ các mục list */
+  padding: 0 20px; /* Thêm một chút khoảng cách giữa các mục menu */
+}
+
+.sidebar a {
+  color: white; /* Màu chữ của các liên kết */
+  text-decoration: none; /* Loại bỏ gạch dưới */
+  font-size: 16px; /* Cỡ chữ của menu */
+}
+
+.sidebar a:hover {
+  color: #3498db; /* Màu chữ khi hover */
+}
+
+/* Phần nội dung chính */
+.main-content {
+  flex-grow: 1; /* Chiếm hết không gian còn lại */
+  display: flex;
+  flex-direction: column; /* Điều chỉnh các phần tử trong main content theo chiều dọc */
+  justify-content: center; /* Căn giữa nội dung theo chiều dọc */
+  align-items: center; /* Căn giữa nội dung theo chiều ngang */
+  background-color: #f6f7f7; /* Màu nền của main content */
+  padding: 20px;
+  height: 100vh; /* Đảm bảo chiều cao đủ để căn giữa */
+  margin: 0; /* Loại bỏ margin của phần tử */
+  text-align: center;
+}
+
+/* Footer */
+.App-footer {
+  background-color: #3c556e; /* Màu nền của footer */
+  color: white; /* Màu chữ trong footer */
+  padding: 10px;
+  text-align: center;
+  flex-shrink: 0; /* Đảm bảo footer không bị thu nhỏ */
+  position: relative; /* Đảm bảo footer luôn ở dưới cùng */
+  bottom: 0; /* Gắn footer ở đáy màn hình */
+  width: 100%; /* Đảm bảo footer chiếm toàn bộ chiều rộng */
+}

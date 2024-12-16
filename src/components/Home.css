@@ -1,0 +1,49 @@
+/* Home.css */
+
+/* Vùng chính giữa */
+.main-content {
+  display: flex;
+  flex-direction: column; /* Chuyển các phần tử thành cột */
+  align-items: center; /* Căn giữa theo chiều ngang */
+  justify-content: center; /* Căn giữa theo chiều dọc */
+  padding: 20px;
+  background-color: #ecf0f1; /* Màu nền */
+  height: 100%; /* Chiếm toàn bộ chiều cao */
+}
+
+/* Vùng hiển thị hình ảnh */
+.intro-image img {
+  border-radius: 50%; /* Làm tròn ảnh */
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* Đảm bảo ảnh không bị méo */
+  border: 5px solid #ddd; /* Thêm viền cho ảnh */
+  margin-bottom: 20px; /* Khoảng cách dưới ảnh */
+}
+
+/* Phần văn bản giới thiệu */
+.intro-text {
+  text-align: center; /* Căn giữa văn bản */
+}
+
+.intro-text h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.intro-text h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.intro-text p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.intro-text p svg {
+  margin-right: 10px;
+  vertical-align: middle;
+}
