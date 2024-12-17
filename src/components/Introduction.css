@@ -1,56 +1,163 @@
+/* Styling cho Introduction Container */
 .introduction-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row; /* Sắp xếp nội dung và sidebar theo chiều ngang */
+  min-height: 100vh; /* Đảm bảo chiều cao của toàn bộ container */
+  flex-wrap: wrap; /* Cho phép các phần tử tự động xuống dòng khi không đủ không gian */
+  align-items: stretch; /* Kéo dài các phần tử con để có chiều cao giống nhau */
+}
+
+.category-selector {
+  width: 200px; /* Độ rộng của sidebar */
+  background-color: #052d3b; /* Màu nền cho sidebar */
+  color: white; /* Màu chữ cho sidebar */
   padding: 20px;
-  background-color: #f8f9fa;
-}
-
-.intro-section h1 {
-  font-size: 36px;
-  color: #2c3e50;
-}
-
-.intro-section h2 {
-  font-size: 24px;
-  color: #7f8c8d;
-}
-
-.intro-image-section {
   display: flex;
-  align-items: center;
-  margin-top: 20px;
+  flex-direction: column; /* Sắp xếp các buttons theo chiều dọc */
+  align-items: flex-start; /* Căn lề trái */
+  height: 150vh; /* Chiều cao sidebar luôn bằng chiều cao màn hình */
+  margin: 0;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0; /* Đảm bảo sidebar luôn cố định khi cuộn trang */
 }
 
-.profile-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-right: 20px;
-  border: 5px solid #ddd;
-}
-
-.intro-details {
+.category-selector button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Padding cho button */
+  margin: 10px 0;
+  text-align: left;
   font-size: 18px;
-  color: #34495e;
+  cursor: pointer;
+  width: 100%;
 }
 
-.intro-hometown,
-.intro-education {
-  margin-top: 30px;
+.category-selector button:hover {
+  background-color: #575757; /* Màu nền khi hover */
+}
+
+.content-column {
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+  background-color: #91dbd3; /* Màu nền cho phần nội dung */
+  width: calc(100% - 200px); /* Đảm bảo phần nội dung chiếm phần còn lại */
+  box-sizing: border-box;
+  min-height: 100vh; /* Đảm bảo phần nội dung kéo dài ít nhất chiều cao màn hình */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.info-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.image-column {
+  width: 30%;
+  margin-right: 20px;
+}
+
+.content-column h3, .content-column h4, .content-column h5 {
+  margin: 10px 0;
+}
+
+header h1 {
   text-align: center;
+  margin-bottom: 20px; /* Khoảng cách giữa h1 và phần content dưới */
 }
 
-.hometown-image,
-.university-image {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-  margin-bottom: 10px;
-  border-radius: 8px;
+/* Phần Nội dung Dòng 1 và Dòng 2 */
+.content-row1, .content-row2 {
+  margin-top: 20px; /* Khoảng cách giữa phần header và content-row1 */
+  padding: 10px;
+  text-align: center; /* Căn giữa nội dung */
 }
 
-h3 {
-  font-size: 24px;
-  color: #2c3e50;
+/* Điều chỉnh cho các màn hình nhỏ hơn */
+
+@media (max-width: 1024px) {
+  .category-selector {
+    width: 180px; /* Giảm độ rộng của sidebar trên màn hình nhỏ hơn */
+  }
+
+  .content-column {
+    padding: 20px; /* Giữ padding cho phần nội dung */
+  }
+
+  .image-column {
+    width: 40%; /* Hình ảnh chiếm 40% chiều rộng của item */
+  }
+
+  .info-item {
+    flex-direction: column; /* Chuyển bố cục item thành cột */
+    align-items: center; /* Căn giữa các item */
+  }
+}
+
+@media (max-width: 768px) {
+  .category-selector {
+    width: 150px; /* Sidebar sẽ hẹp hơn trên màn hình nhỏ hơn */
+  }
+
+  .content-column {
+    padding: 15px; /* Giảm padding cho phần nội dung */
+  }
+
+  .image-column {
+    width: 50%; /* Hình ảnh chiếm 50% chiều rộng của item */
+  }
+
+  .info-item {
+    flex-direction: column; /* Chuyển bố cục item thành cột */
+    align-items: center; /* Căn giữa các item */
+  }
+
+  .category-selector button {
+    font-size: 16px; /* Giảm kích thước chữ cho nút trên màn hình nhỏ */
+  }
+}
+
+@media (max-width: 480px) {
+  .introduction-container {
+    flex-direction: column; /* Chuyển toàn bộ bố cục thành cột trên màn hình di động */
+  }
+
+  .category-selector {
+    width: 100%; /* Sidebar sẽ chiếm toàn bộ chiều rộng trên màn hình nhỏ */
+    height: auto; /* Chiều cao của sidebar sẽ tự động thay đổi */
+    padding: 15px; /* Giảm padding cho phù hợp với màn hình nhỏ */
+  }
+
+  .content-column {
+    padding: 10px; /* Giảm padding cho phần nội dung */
+    width: 100%; /* Chiếm toàn bộ chiều rộng trên màn hình nhỏ */
+  }
+
+  .image-column {
+    width: 100%; /* Hình ảnh chiếm toàn bộ chiều rộng trên màn hình nhỏ */
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .info-item {
+    flex-direction: column; /* Chuyển bố cục item thành cột */
+    align-items: center; /* Căn giữa các item */
+  }
+
+  header h1 {
+    font-size: 1.5rem; /* Giảm kích thước chữ của h1 trên màn hình nhỏ */
+  }
+
+  .category-selector button {
+    font-size: 14px; /* Giảm cỡ chữ trên các nút */
+  }
 }

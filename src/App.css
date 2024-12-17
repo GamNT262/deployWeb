@@ -1,12 +1,17 @@
-/* App.css hoặc styles.css */
+/* Đảm bảo sử dụng box-sizing cho tất cả các phần tử */
 * {
-  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước của phần tử */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* Đảm bảo container chính chiếm toàn bộ chiều cao và chiều rộng */
 .app-container {
   display: flex;
-  flex-direction: column; /* Điều chỉnh chiều dọc để menu nằm trên cùng */
-  height: 100vh; /* Chiều cao đầy đủ của cửa sổ */
+  flex-direction: column;
+  min-height: 100vh; /* Chiều cao tối thiểu bằng với chiều cao cửa sổ */
+  width: 100%; /* Đảm bảo chiếm toàn bộ chiều rộng */
+  overflow-x: hidden; /* Ngăn chặn phần tử tràn ra ngoài */
 }
 
 .sidebar {
@@ -14,13 +19,16 @@
   justify-content: space-evenly; /* Chia đều không gian giữa các mục menu */
   align-items: center; /* Căn giữa các mục menu theo chiều dọc */
   background-color: #2c3e50; /* Màu nền của thanh điều hướng */
-  padding: 10px 0;
+  padding: 20px 0;
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .sidebar ul {
   display: flex; /* Chuyển list sang dạng flex */
   padding: 0; /* Loại bỏ khoảng cách mặc định */
   margin: 0; /* Loại bỏ margin mặc định */
+  box-sizing: border-box;
 }
 
 .sidebar li {
@@ -29,37 +37,80 @@
 }
 
 .sidebar a {
-  color: white; /* Màu chữ của các liên kết */
+  color: rgb(250, 245, 245); /* Màu chữ của các liên kết */
   text-decoration: none; /* Loại bỏ gạch dưới */
   font-size: 16px; /* Cỡ chữ của menu */
 }
 
 .sidebar a:hover {
-  color: #3498db; /* Màu chữ khi hover */
+  color: #490b5a; /* Màu chữ khi hover */
 }
 
-/* Phần nội dung chính */
 .main-content {
-  flex-grow: 1; /* Chiếm hết không gian còn lại */
   display: flex;
-  flex-direction: column; /* Điều chỉnh các phần tử trong main content theo chiều dọc */
-  justify-content: center; /* Căn giữa nội dung theo chiều dọc */
-  align-items: center; /* Căn giữa nội dung theo chiều ngang */
-  background-color: #f6f7f7; /* Màu nền của main content */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Chiếm hết không gian còn lại */
+  background-color: #f8f9f9;
+  width: 100%; /* Đảm bảo nội dung chiếm hết chiều rộng */
   padding: 20px;
-  height: 100vh; /* Đảm bảo chiều cao đủ để căn giữa */
-  margin: 0; /* Loại bỏ margin của phần tử */
-  text-align: center;
+  overflow-x: hidden; /* Ngăn chặn tràn ngang */
 }
 
-/* Footer */
 .App-footer {
-  background-color: #3c556e; /* Màu nền của footer */
-  color: white; /* Màu chữ trong footer */
+  background-color: #0f263d;
+  color: white;
   padding: 10px;
   text-align: center;
-  flex-shrink: 0; /* Đảm bảo footer không bị thu nhỏ */
-  position: relative; /* Đảm bảo footer luôn ở dưới cùng */
-  bottom: 0; /* Gắn footer ở đáy màn hình */
-  width: 100%; /* Đảm bảo footer chiếm toàn bộ chiều rộng */
+  width: 100%;
+}
+
+/* Responsive Styling */
+@media (max-width: 1024px) {
+  .sidebar {
+    flex-direction: column; /* Chuyển sidebar sang dạng cột trên màn hình nhỏ */
+    padding: 15px 0;
+  }
+
+  .sidebar ul {
+    flex-direction: column; /* Sắp xếp menu theo chiều dọc */
+    align-items: center; /* Căn giữa các mục menu */
+  }
+
+  .sidebar li {
+    padding: 10px 0;
+  }
+
+  .main-content {
+    max-width: 100%; /* Nội dung sẽ chiếm toàn bộ chiều rộng trên màn hình nhỏ */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar a {
+    font-size: 14px; /* Giảm cỡ chữ của menu trên màn hình nhỏ hơn */
+  }
+
+  .App-footer {
+    padding: 20px; /* Thêm padding cho footer trên màn hình nhỏ */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 10px 0;
+  }
+
+  .sidebar a {
+    font-size: 12px; /* Giảm cỡ chữ của menu trên màn hình rất nhỏ */
+  }
+
+  .main-content {
+    padding: 10px; /* Thêm padding cho nội dung chính trên màn hình rất nhỏ */
+  }
+
+  .App-footer {
+    font-size: 12px; /* Giảm cỡ chữ của footer trên màn hình rất nhỏ */
+  }
 }

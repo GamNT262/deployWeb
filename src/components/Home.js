@@ -5,7 +5,22 @@ import { FaEnvelope, FaPhone } from "react-icons/fa"; // Import các icon
 
 const Home = () => {
   return (
-    <div className="main-content">
+    <div
+      className="main-content"
+      style={{
+        backgroundImage: "url('/assets/images/image5.jpg')", // Đường dẫn đến ảnh nền
+        backgroundSize: "cover", // Đảm bảo ảnh nền phủ toàn bộ
+        backgroundPosition: "center", // Căn giữa ảnh
+        backgroundAttachment: "fixed", // Làm ảnh nền cố định khi cuộn trang
+        minHeight: "100vh", // Đảm bảo ảnh nền chiếm ít nhất chiều cao của màn hình
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center", // Căn giữa nội dung
+        alignItems: "center", // Căn giữa nội dung
+        color: "Black", // Đảm bảo chữ có thể đọc rõ trên nền
+        textAlign: "center", // Căn chỉnh text
+      }}
+    >
       {/* Hình ảnh intro */}
       <div className="intro-image">
         <img

@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { FaBirthdayCake } from "react-icons/fa"; // Icon cho tuổi
 import "./ImageList.css";
+import "./Introduction.css";
+import Hometown from "./Hometown";
+import Hobbies from "./Hobbies";
 
 function Introduction() {
-  // State lưu chỉ số ảnh hiện tại cho từng danh sách
   const [currentImageIndex, setCurrentImageIndex] = useState({
     name: 0,
     hometown: 0,
-    university: 0,
+    hobbies: 0,
   });
 
-  // Dữ liệu ảnh cho từng mục
+  const [selectedCategory, setSelectedCategory] = useState("name");
+
   const images = {
-    name: ["/assets/images/image1.jpg", "/assets/images/image4.png"],
+    name: [
+      "/assets/images/image1.jpg",
+      "/assets/images/image4.png",
+      "/assets/images/image6.png",
+    ],
     hometown: [
       "/hometown/hometown1.jpg",
       "/hometown/hometown2.jpg",
@@ -23,99 +30,107 @@ function Introduction() {
       "/hometown/hometown7.jpg",
       "/hometown/hometown8.jpg",
     ],
-    university: [
-      "/university/university1.jpg",
-      "/university/university2.jpg",
-      "/university/university3.jpg",
-      "/university/university4.jpg",
+    hobbies: [
+      "/hobbies/travel1.jpg",
+      "/hobbies/travel2.jpg",
+      "/hobbies/travel3.jpg",
+      "/hobbies/travel4.jpg",
+      "/hobbies/travel5.jpg",
+      "/hobbies/image1.jpg",
+      "/hobbies/image2.jpg",
+      "/hobbies/image3.jpg",
+      "/hobbies/image4.jpg",
     ],
   };
 
-  // Hàm cập nhật chỉ số ảnh
   const updateImageIndex = (key) => {
     setCurrentImageIndex((prevState) => ({
       ...prevState,
-      [key]: (prevState[key] + 1) % images[key].length, // Vòng lặp ảnh
+      [key]: (prevState[key] + 1) % images[key].length,
     }));
   };
 
-  // Tạo hiệu ứng slide cho từng danh sách ảnh
   useEffect(() => {
     const nameInterval = setInterval(() => updateImageIndex("name"), 3000);
     const hometownInterval = setInterval(
       () => updateImageIndex("hometown"),
       5000
     );
-    const universityInterval = setInterval(
-      () => updateImageIndex("university"),
+    const hobbiesInterval = setInterval(
+      () => updateImageIndex("hobbies"),
       4000
     );
 
-    // Cleanup khi component bị unmount
     return () => {
       clearInterval(nameInterval);
       clearInterval(hometownInterval);
-      clearInterval(universityInterval);
+      clearInterval(hobbiesInterval);
     };
   }, []);
 
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
   return (
-    <div className="introduction-container">
-      <h1>自己紹介</h1>
+    <div
+      className="introduction-container"
+      style={{
+        backgroundImage: "url('/assets/images/image5.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        minHeight: "100vh",
+        color: "black",
+      }}
+    >
+      <div className="category-selector">
+        <button onClick={() => handleCategorySelect("name")}>個人の情報</button>
+        <button onClick={() => handleCategorySelect("hometown")}>出身</button>
+        <button onClick={() => handleCategorySelect("hobbies")}>趣味</button>
+      </div>
 
-      {/* Danh sách thông tin */}
-      <ul className="info-list">
-        {/* Thông tin về tên */}
-        <li className="info-item">
-          <h3>名前: NGO THI GAM</h3>
-          <h4>ゴー・ティ・ガム</h4>
-          <h4>
-            <FaBirthdayCake /> 年齢: 27 tuổi
-          </h4>
-          <h5>
-            私は明るくて楽観的な性格です。日常生活でも仕事の中でも、いつも楽観的でリラックスした気持ちを保つように心がけています。
-            <br />
-            なぜなら、心の状態が良ければ、すべてがうまくいくと思うからです。たとえ困難な問題に直面したとしても、楽観的で冷静でいることで、
-            <br />
-            最善の解決策を早く見つけられると信じています。
-          </h5>
-          <h5>
-            仕事に関してですが、ITエンジニアとして、常にITに関する幅広い知識を身につけたいと考えています。
-            <br />
-            プログラミング言語だけでなく、データベース、テスト、製品レビューなどにも関心を持ち、学んでいきたいと思っています。
-          </h5>
-          <img
-            src={images.name[currentImageIndex.name]} // Chọn ảnh từ mảng
-            alt="Profile"
-            className="info-image"
-          />
-        </li>
+      <div className="content-column">
+        {selectedCategory === "name" && (
+          <ul className="info-list">
+            <li className="info-item">
+              <div className="image-column">
+                <img
+                  src={images.name[currentImageIndex.name]}
+                  alt="Profile"
+                  className="info-image"
+                />
+              </div>
+              <div className="content-column">
+                <h1>名前: NGO THI GAM</h1>
+                <h3>ゴー・ティ・ガム</h3>
+                <h3>年齢: 27歳</h3>
+                <h3>職業: ITエンジニア</h3>
+                <h4>
+                  私は明るくて楽観的な性格です。日常生活でも仕事の中でも、いつも楽観的でリラックスした気持ちを保つように心がけています。
+                  <br />
+                  なぜなら、心の状態が良ければ、すべてがうまくいくと思うからです。たとえ困難な問題に直面したとしても、楽観的で冷静でいることで、
+                  <br />
+                  最善の解決策を早く見つけられると信じています。
+                </h4>
+                <h4>
+                  仕事に関してですが、ITエンジニアとして、常にITに関する幅広い知識を身につけたいと考えています。
+                  <br />
+                  プログラミング言語だけでなく、データベース、テスト、製品レビューなどにも関心を持ち、学んでいきたいと思っています。
+                </h4>
+              </div>
+            </li>
+          </ul>
+        )}
 
-        {/* Thông tin về quê quán */}
-        <li className="info-item">
-          <h3>出身地: Nam Dinh, Viet Nam</h3>
-          <h5>
-            ナムディンは、ベトナム北部にある小さな都市です。ここは大きくて美しい教会で有名で、多くの若者に人気があります。<br/>
-            また、ネムナムやフォーボーなどの名物料理もあります。
-          </h5>
-          <img
-            src={images.hometown[currentImageIndex.hometown]} // Chọn ảnh từ mảng
-            alt="Hometown"
-            className="info-image"
-          />
-        </li>
+        {selectedCategory === "hometown" && (
+          <Hometown images={images} currentImageIndex={currentImageIndex} />
+        )}
 
-        {/* Thông tin về trường đại học */}
-        <li className="info-item">
-          <h3>大学: タイグエン情報技術大学</h3>
-          <h4>2021年に卒業しました。専門は情報技術です。</h4>
-          <img
-            src={images.university[currentImageIndex.university]} // Chọn ảnh từ mảng
-            alt="University"
-            className="info-image"
-          />
-        </li>
-      </ul>
+        {selectedCategory === "hobbies" && (
+          <Hobbies images={images} currentImageIndex={currentImageIndex} />
+        )}
+      </div>
     </div>
   );
 }
