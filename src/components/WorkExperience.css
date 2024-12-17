@@ -1,0 +1,75 @@
+/* Đặt các style cơ bản cho phần chính */
+.work-experience-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+}
+
+/* Thiết lập flexbox cho phần nội dung */
+.skills-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 20px;
+  max-width: 1200px; /* Đảm bảo không giới hạn quá hẹp */
+  margin: 0 auto; /* Căn giữa toàn bộ */
+}
+
+
+/* Style cho từng cột */
+.skill-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.skill-card {
+  background-color: #add8e6;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  width: 100%; /* Đảm bảo chiếm 90% chiều rộng container */
+  max-width: 700px; /* Tăng chiều rộng tối đa */
+  min-height: 150px;
+  font-size: 18px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+
+/* Responsive: Khi màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+  .skills-section {
+    flex-direction: column;
+  }
+
+  .skill-column {
+    width: 100%;
+  }
+
+  .skill-card {
+    max-width: 100%; /* Chiều rộng tối đa bằng 100% */
+  }
+}
+
+/* Responsive: Khi màn hình nhỏ hơn 480px */
+@media (max-width: 480px) {
+  .skill-card {
+    font-size: 16px; /* Giảm kích thước chữ */
+    padding: 8px;
+    min-height: 120px; /* Giảm chiều cao tối thiểu */
+  }
+}
